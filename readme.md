@@ -3,6 +3,11 @@
 
 ## Install
     pip install . --user
+    
+## Usage
+    from persistent_dict import PersistentDict
+    d = PersistentDict()
+    d['a'] = 'test'
 
 ## Install for development
     pip install .[dev] --user
