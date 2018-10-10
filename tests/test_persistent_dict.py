@@ -6,7 +6,7 @@ from persistent_dict import PersistentDict
 
 
 TEST_CASES = [
-    ({'a': 12}),
+    {'a': 12},
     {'a': {'b': 'c'}},
     {'a': None, True: False},
     {},
@@ -39,8 +39,17 @@ def test_create_from_keys(tmpdict):
     assert test_dict == {'a': 'value', 'b': 'value', 'c': 'value'}
 
 
+@pytest.mark.parametrize('test_data', TEST_CASES)
+def test_create_from_assignment(tmpdict, test_data):
+    """Assignments should work as expected"""
+    test_dict = tmpdict()
+    for k, v in test_data.items():
+        test_dict[k] = v
+    assert test_dict == test_data
+
+
 def test_get(tmpdict):
-    """Get should work as expected"""
+    """`get()` should work as expected"""
     test_dict = tmpdict()
     test_dict['a'] = 'test'
     assert test_dict.get('a') == 'test'
