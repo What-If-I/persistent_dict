@@ -53,4 +53,3 @@ class PersistentDict(UserDict):
     def clear(self):
         super().clear()
         self._storage.clear()
-
